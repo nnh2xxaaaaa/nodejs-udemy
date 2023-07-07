@@ -1,0 +1,13 @@
+{
+  "name": "Ngo Nhat Huy",
+  "age": 30,
+  "email": "nnh2xn@gmail.com",
+  "isEmployed": false,
+  "address": {
+    "street": "Loc Ninh",
+    "city": "Binh Phuoc",
+    "country": "Viet Nam"
+  },
+  "hobbies": ["reading", "swimming", "traveling"],
+  "day": 7
+}
