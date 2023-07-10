@@ -1,15 +1,13 @@
-export interface RootData {
-  name: string;
-  age: number;
-  email: string;
-  isEmployed: boolean;
-  address: Address;
-  hobbies: string[];
-  day: number;
-}
+export type Root = Root2[];
 
-export interface Address {
-  street: string;
-  city: string;
-  country: string;
+export interface Root2 {
+  id: number;
+  productName: string;
+  image: string;
+  from: string;
+  nutrients: string;
+  quantity: string;
+  price: string;
+  organic: boolean;
+  description: string;
 }

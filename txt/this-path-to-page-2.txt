@@ -1,0 +1,1 @@
+In this updated code, I defined an async function named main that wraps the entire code. Within main, I await the createFile() function to ensure it completes before moving on to the console.log("will") statement. You can now add your desired logic after the console.log("will") statement in the main function. Finally, I call main() to start the execution of the asynchronous code.
