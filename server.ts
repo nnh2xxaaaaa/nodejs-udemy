@@ -34,16 +34,12 @@ const slugs = productData.map((el: Root2) =>
 );
 
 const server = http.createServer((req, res) => {
-  // const pathName = req.url;
-  // const { pathName, query } = url.parse(req.url, true);
-
   const { query, pathname } = url.parse(req.url, true);
-  // const { query, pathName } = url.parse(req.url, true);
-  // console.log(query);
   if (
     pathname === "/overview.html" ||
     pathname === "/overview" ||
-    pathname === "/"
+    pathname === "/"||
+    pathname ==='/templates/view/overview.html'
   ) {
     // Overview Page
     res.writeHead(200, {
@@ -55,21 +51,19 @@ const server = http.createServer((req, res) => {
       .join("");
     const card = tempOverview.replace("{%PRODUCT_CARDS%}", cardsHtml);
     res.end(card);
-    console.log(query);
+  
   } else if (
     pathname === "/product" ||
-    pathname === "/templates/view/product.html?id=0"
+    pathname === "/templates/view/product.html"
   ) {
     // Product Page
     res.writeHead(200, {
       "Content-Type": "text/html",
     });
-    console.log(query);
-
-    const product = productData[query.id];
-    console.log(product);
-
-    res.end(tempProduct);
+    const product : Root2 = productData[query.id]
+    console.log(product,'product')
+    const output = replaceTemplate(tempProduct,product)
+    res.end(output);
   } else if (pathname === "/data") {
     res.writeHead(200, {
       "Content-Type": "application/json",
@@ -85,6 +79,6 @@ const server = http.createServer((req, res) => {
 });
 
 const port = process.env.PORT_8080 || 3003;
-server.listen(Number(port), "127.0.0.1", () => {
+server.listen(Number(port), () => {
   console.log(`Listening on port 127.0.0.1:${port}/overview`);
 });
