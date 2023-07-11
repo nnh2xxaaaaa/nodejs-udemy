@@ -38,8 +38,8 @@ const server = http.createServer((req, res) => {
   if (
     pathname === "/overview.html" ||
     pathname === "/overview" ||
-    pathname === "/"||
-    pathname ==='/templates/view/overview.html'
+    pathname === "/" ||
+    pathname === "/templates/view/overview.html"
   ) {
     // Overview Page
     res.writeHead(200, {
@@ -51,7 +51,6 @@ const server = http.createServer((req, res) => {
       .join("");
     const card = tempOverview.replace("{%PRODUCT_CARDS%}", cardsHtml);
     res.end(card);
-  
   } else if (
     pathname === "/product" ||
     pathname === "/templates/view/product.html"
@@ -60,9 +59,9 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {
       "Content-Type": "text/html",
     });
-    const product : Root2 = productData[query.id]
-    console.log(product,'product')
-    const output = replaceTemplate(tempProduct,product)
+    const product: Root2 = productData[query.id];
+    console.log(product, "product");
+    const output = replaceTemplate(tempProduct, product);
     res.end(output);
   } else if (pathname === "/data") {
     res.writeHead(200, {
